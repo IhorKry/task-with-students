@@ -10,19 +10,24 @@ namespace InternshipTest
         static void Main(string[] args)
         {
             var s = new Student("Alex");
-            var a = new Student("Alex");
-            var b = new Student("Alex");
             University university = new University("CH.U.I.");
             university.AddStudent(new Student("Andrew Kostenko"));
             university.AddStudent(new Student("Julia Veselkina"));
             university.AddStudent(new Student("Maria Perechrest"));
 
-            // Internship internship = new Internship("Interlink");
+            Internship internship = new Internship("Interlink");
+            internship.setStudentsFromUniversity(university);
+
+
+
             // Console.WriteLine("List of internship's students:");
             // Console.WriteLine(internship.GetStudents());
-            System.Console.WriteLine(s.getKnowledgeLevel());
-            System.Console.WriteLine(a.getKnowledgeLevel());
-            System.Console.WriteLine(b.getKnowledgeLevel());
+
+
+
+            // System.Console.WriteLine(s.getKnowledgeLevel());
+            // System.Console.WriteLine(a.getKnowledgeLevel());
+            // System.Console.WriteLine(b.getKnowledgeLevel());
         }
     }
 }
