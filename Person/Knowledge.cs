@@ -1,5 +1,3 @@
-using System;
-
 namespace InternshipTest
 {
     public class Knowledge

@@ -26,7 +26,7 @@ namespace InternshipTest.Institution
             return Students;
         }
 
-        public void UpdateAverageScore()
+        private void UpdateAverageScore()
         {
             int studentCounter = 0;
             int generalScore = 0;

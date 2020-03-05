@@ -23,6 +23,8 @@ namespace InternshipTest
             Console.WriteLine("List of university students:");
             Console.WriteLine(createReport(university.GetStudents()));
 
+            Console.WriteLine($"Average score: {university.GetAverageScore()} \n");
+
             Internship internship = new Internship("Interlink");
             internship.SetStudentsFromUniversity(university);
 
