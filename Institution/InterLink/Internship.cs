@@ -15,9 +15,8 @@ namespace InternshipTest.Institution.InterLink
 
         public void SetStudentsFromUniversity(University university)
         {
-            // здесь использовать var или привести к типу(как сейчас)?
-            List<Student> students = university.GetStudents();
-            int universityAverageScore = university.GetAverageScore();
+            var students = university.GetStudents();
+            var universityAverageScore = university.GetAverageScore();
 
             foreach (var student in students)
             {
