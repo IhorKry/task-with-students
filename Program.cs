@@ -2,6 +2,9 @@
 using InternshipTest.Person;
 using InternshipTest.Institution;
 using InternshipTest.Institution.InterLink;
+using System.Text;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace InternshipTest
 {
@@ -9,25 +12,35 @@ namespace InternshipTest
     {
         static void Main(string[] args)
         {
-            var s = new Student("Alex");
             University university = new University("CH.U.I.");
             university.AddStudent(new Student("Andrew Kostenko"));
             university.AddStudent(new Student("Julia Veselkina"));
             university.AddStudent(new Student("Maria Perechrest"));
+            university.AddStudent(new Student("Viktoria Foo"));
+            university.AddStudent(new Student("John Doe"));
+            university.AddStudent(new Student("Viktor Bazas"));
+
+            Console.WriteLine("List of university students:");
+            Console.WriteLine(createReport(university.GetStudents()));
 
             Internship internship = new Internship("Interlink");
-            internship.setStudentsFromUniversity(university);
+            internship.SetStudentsFromUniversity(university);
 
+            Console.WriteLine("List of internship's students:");
+            Console.WriteLine(createReport(internship.GetStudents()));
+        }
 
+        static public string createReport(List<Student> students)
+        {
+            var report = new StringBuilder();
+            List<Student> sortedStudents = students.OrderBy(student => student.GetKnowledgeLevel()).Reverse().ToList();
 
-            // Console.WriteLine("List of internship's students:");
-            // Console.WriteLine(internship.GetStudents());
+            foreach (var student in sortedStudents)
+            {
+                report.AppendLine($"student: {student.GetName()}, with score: {student.GetKnowledgeLevel()}");
+            }
 
-
-
-            // System.Console.WriteLine(s.getKnowledgeLevel());
-            // System.Console.WriteLine(a.getKnowledgeLevel());
-            // System.Console.WriteLine(b.getKnowledgeLevel());
+            return report.ToString();
         }
     }
 }

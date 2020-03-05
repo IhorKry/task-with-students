@@ -5,24 +5,44 @@ namespace InternshipTest.Institution
 {
     public class University
     {
-        public string Name;
-        public List<Student> Students = new List<Student>(); 
+        private string Name;
+        private int AverageScore;
+        private List<Student> Students = new List<Student>();
 
         public University(string name)
-        {
-            //TODO: Implementation is needed  
+        { 
             Name = name;
+            AverageScore = 0;
         }
 
         public void AddStudent(Student student)
         {
-            //TODO: Implementation is needed
             Students.Add(student);
+            UpdateAverageScore();
         }
 
-        public List<Student> getAllStudents()
+        public List<Student> GetStudents()
         {
             return Students;
+        }
+
+        public void UpdateAverageScore()
+        {
+            int studentCounter = 0;
+            int generalScore = 0;
+
+            foreach (var student in Students)
+            {
+                studentCounter++;
+                generalScore += student.GetKnowledgeLevel();
+            }
+
+            AverageScore = generalScore / studentCounter;
+        }
+
+        public int GetAverageScore()
+        {
+            return AverageScore;
         }
     }
 }

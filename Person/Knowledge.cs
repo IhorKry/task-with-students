@@ -1,15 +1,18 @@
+using System;
+
 namespace InternshipTest
 {
     public class Knowledge
     {
-        public int KnowledgeLevel;
+        private int KnowledgeLevel;
+
         public Knowledge(int level)
         {
-            //TODO: Implementation is needed
-            KnowledgeLevel = level; 
+            KnowledgeLevel = level;
         }
 
-        public int getKnowledgeLevel() {
+        public int GetKnowledgeLevel()
+        {
             return KnowledgeLevel;
         }
     }

@@ -4,27 +4,42 @@ namespace InternshipTest.Person
 {
     public class Student
     {
-        public string Name;
-        public Knowledge Knowledge;
-        public Random random = new Random();
+        private string Name;
+        private Knowledge Knowledge;
 
         public Student(string name)
         {
-            //TODO: Implementation is needed
             Name = name;
-            var initKnowledge = new Knowledge(random.Next(0, 100));
+
+            Random random = new Random();
+            Knowledge initKnowledge = new Knowledge(random.Next(0, 100));
             SetKnowledge(initKnowledge);
         }
 
-        public void SetKnowledge(Knowledge knowledge)
+        public void SetKnowledge(Knowledge newKnowledge)
         {
-            //TODO: Implementation is needed
-            Knowledge = knowledge;
+            if (newKnowledge.GetKnowledgeLevel() < 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(newKnowledge), "Level knowledge of student must be positive");
+            }
+            else if (newKnowledge.GetKnowledgeLevel() > 100)
+            {
+                throw new ArgumentOutOfRangeException(nameof(newKnowledge), "Level knowledge of student must be in range from 0 to 100");
+            }
+            else
+            {
+                Knowledge = newKnowledge;
+            }
         }
 
-        public int getKnowledgeLevel()
+        public string GetName()
         {
-            return Knowledge.getKnowledgeLevel();
+            return Name;
+        }
+
+        public int GetKnowledgeLevel()
+        {
+            return Knowledge.GetKnowledgeLevel();
         }
     }
 }
